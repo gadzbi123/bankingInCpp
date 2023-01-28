@@ -1,0 +1,51 @@
+user - base
+client i admin - polimorfia
+
+Billing - base
+client i bank - polimorfia
+
+Billing(1) - 
+	values:
+	currencies = unordered map {curr:PLN, val:x}...
+	methods:
+	exchange currency (curr_tag,value)
+	get_curr(PLN),
+	see_conversion(pln,usd,5)
+	convert(pln,usd,5)
+bank(1) - from Billing
+	values:
+	methods:
+	loan currency (user,curr_tag,value, %)
+	loans given() -> count 
+user(x) - 
+	values:
+	name = string
+	methods:
+	get_name()
+	change password() - virtual
+	
+client(x) - from user, Billing
+	values:
+	methods:
+	withdraw (curr, val)
+	deposit (curr, val)
+	invest (curr, val, time, %)
+	request loan (curr_tag,value, %)
+	change password()
+admin(x) -
+	values:
+	methods:
+	check_last_errors_from_users
+ 	check_last_errors_from_bank
+	clear errors
+	change password() - own or client's
+CaesarCipher -
+	values:
+	key - int (-26 to 25)
+	methods:
+	encode(str)
+	decode(str)
+Login_menager - 
+	methods:
+	private check_password()
+	login()
