@@ -39,6 +39,7 @@ admin(x) -
  	check_last_errors_from_bank
 	clear errors
 	change password() - own or client's
+	
 CaesarCipher -
 	values:
 	key - int (-26 to 25)
