@@ -46,7 +46,12 @@ CaesarCipher -
 	methods:
 	encode(str)
 	decode(str)
-Login_menager - 
+account manager - 
 	methods:
+	make account
+	check account
+
 	private check_password()
 	login()
+
+	accountMan -> user/bank

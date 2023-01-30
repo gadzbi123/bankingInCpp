@@ -1,6 +1,24 @@
 #include "User.h"
 
-bool User::putPasswordToFile(std::string password)
+bool User::checkPasswordFromFile(const std::string& password) {
+	std::ifstream file("../bankingInCpp/passwords.txt");
+	std::string line;
+
+	while (getline(file, line))
+	{
+		std::istringstream ss(line);
+		std::string n, p;
+
+		ss >> n >> p;
+
+		std::cout << (n == name) << " " << (p == password) << "\n";
+		if (n == name && p == password)
+			return true;
+	}
+	return false;
+}
+
+bool User::putPasswordToFile(const std::string& password)
 {
 	std::ofstream file("../bankingInCpp/passwords.txt", std::ios_base::app);
 	if (file.is_open()) {
@@ -12,7 +30,7 @@ bool User::putPasswordToFile(std::string password)
 	return false;
 
 }
-bool User::savePasswordToFile(std::string password) {
+bool User::savePasswordToFile(const std::string& password) {
 	//check if user exists
 
 	std::fstream file("../bankingInCpp/passwords.txt");
@@ -58,37 +76,8 @@ bool User::setName(std::string& n) {
 	return true;
 }
 
-bool User::changePassword(std::string password) {
-	// check size
-	if (password.length() < 4)
-		return false;
-
-
-	bool hasDigit = false;
-	bool hasLetter = false;
-	for (int i = 0; i < password.length(); i++) {
-		if (isdigit(password[i]))
-			hasDigit = true;
-		if (isalpha(password[i]))
-			hasLetter = true;
-	}
-
-	if (!hasDigit || !hasLetter)
-		return false;
-
-	// check for presence of forbidden characters
-	std::string forbiddenChars = "!@#$%^&*()";
-	for (int i = 0; i < forbiddenChars.length(); i++) {
-		if (password.find(forbiddenChars[i]) != std::string::npos) {
-			return false;
-		}
-	}
-
-	if (!savePasswordToFile(password))
-		return false;
-
-	return true;
-
-
+bool User::changePassword(const std::string& password) {
+	std::cout << "Use change password on admin or client" << std::endl;
+	return false;
 }
 

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bank\Billing.cpp" />
     <ClCompile Include="UI\CaesarCipher.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="bank\bank.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bank\bank.h" />
+    <ClInclude Include="bank\Billing.h" />
     <ClInclude Include="UI\CaesarCipher.h" />
     <ClInclude Include="users\Admin.h" />
     <ClInclude Include="users\Client.h" />
