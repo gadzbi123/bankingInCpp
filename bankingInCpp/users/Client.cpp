@@ -1,11 +1,36 @@
 #include "Client.h"
 
-bool Client::changePassword(const std::string& password)
-{
-	// check size
-	if (password.length() < 4)
+Client::Client() :User("xdd") {
+	if (!Billing::getMoneyFromFile(name))
+		Billing::saveMoneyToFile(name);
+}
+
+Client::Client(std::string n) : User(n) {
+	if (!Billing::getMoneyFromFile(name))
+		Billing::saveMoneyToFile(name);
+}
+
+bool Client::withdraw(const std::string& currencyTag, float value) {
+	if (!Billing::keyExists(currencyTag))
+		return false;
+	if (currValues[currencyTag] < value)
 		return false;
 
+	currValues[currencyTag] -= value;
+	return true;
+}
+
+bool Client::deposit(const std::string& currencyTag, float value) {
+	if (!Billing::keyExists(currencyTag))
+		return false;
+
+	currValues[currencyTag] += value;
+	return true;
+}
+
+bool Client::changePassword(const std::string& password) {
+	if (password.length() < 4)
+		return false;
 
 	bool hasDigit = false;
 	bool hasLetter = false;
