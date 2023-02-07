@@ -143,6 +143,7 @@
     <ClCompile Include="UI\CaesarCipher.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="bank\bank.cpp" />
+    <ClCompile Include="UI\Display.cpp" />
     <ClCompile Include="users\Admin.cpp" />
     <ClCompile Include="users\Client.cpp" />
     <ClCompile Include="users\User.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="bank\bank.h" />
     <ClInclude Include="bank\Billing.h" />
     <ClInclude Include="UI\CaesarCipher.h" />
+    <ClInclude Include="UI\Display.h" />
     <ClInclude Include="users\Admin.h" />
     <ClInclude Include="users\Client.h" />
     <ClInclude Include="users\User.h" />

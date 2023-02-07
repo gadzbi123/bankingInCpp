@@ -57,7 +57,7 @@ bool Billing::getMoneyFromFile(const std::string& name) {
 	std::string line;
 
 	if (!file) {
-		std::cout << "BADFILE\n";
+		std::cout << "File for money doesn't exist\n";
 		return false;
 	}
 

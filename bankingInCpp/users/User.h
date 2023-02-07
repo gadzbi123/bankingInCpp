@@ -6,8 +6,8 @@
 class User {
 protected:
 	std::string name;
-	bool savePasswordToFile(const std::string&);
-	bool putPasswordToFile(const std::string&);
+	virtual bool savePasswordToFile( const std::string&);
+	bool putPasswordToFile(const char&,const std::string&);
 
 public:
 	virtual void whoAmI() { std::cout << "USER\n"; }
@@ -19,5 +19,5 @@ public:
 	std::string getName();
 	bool setName(std::string&);
 	virtual bool changePassword(const std::string&);
-	bool checkPasswordFromFile(const std::string&);
+	char checkPasswordFromFile(const std::string&);
 };

@@ -1,6 +1,6 @@
 #include "User.h"
 
-bool User::checkPasswordFromFile(const std::string& password) {
+char User::checkPasswordFromFile(const std::string& password) {
 	std::ifstream file("../bankingInCpp/passwords.txt");
 	std::string line;
 
@@ -8,28 +8,32 @@ bool User::checkPasswordFromFile(const std::string& password) {
 	{
 		std::istringstream ss(line);
 		std::string n, p;
+		char role;
 
-		ss >> n >> p;
+		ss >> role >> n >> p;
 
 		std::cout << (n == name) << " " << (p == password) << "\n";
-		if (n == name && p == password)
-			return true;
+		
+			if (n == name && p == password)
+			{
+				return role=='a' ? 'a' : 'c';
+			}
+		
 	}
-	return false;
+	return '\0';
 }
 
-bool User::putPasswordToFile(const std::string& password)
+bool User::putPasswordToFile(const char& role,const std::string& password)
 {
 	std::ofstream file("../bankingInCpp/passwords.txt", std::ios_base::app);
 	if (file.is_open()) {
-		file << name << " " << password << "\n";
+		file <<role << " " << name << " " << password << "\n";
 		file.close();
 		return true;
 	}
-
 	return false;
-
 }
+
 bool User::savePasswordToFile(const std::string& password) {
 	//check if user exists
 
@@ -39,20 +43,21 @@ bool User::savePasswordToFile(const std::string& password) {
 	while (getline(file, line))
 	{
 		std::istringstream ss(line);
-		std::string someName, pass;
+		std::string n, p;
+		char role;
 
-		ss >> someName >> pass;
+		ss >>role >> n >> p;
 
-		if (someName != name)
+		if (n != name)
 			outString += line + '\n';
 		else
-			outString += name + " " + password + '\n';
+			outString += role + " " + name + " " + password + '\n';
 	}
 
 	//start from the begining
 	file.clear();
 	file.seekg(0);
-	
+
 	if (file.is_open()) {
 		file << outString;
 		file.close();
