@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 {
 	//std::unique_ptr<User> usr = std::make_unique<Admin>("adas");
 	//usr->whoAmI();
-	std::unique_ptr<User> user;
+	std::shared_ptr<User> user;
 	Display dsp;
 	dsp.eventLoop(user);
 

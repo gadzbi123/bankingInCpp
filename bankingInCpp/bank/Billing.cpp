@@ -2,17 +2,8 @@
 
 Billing::Billing()
 {
-	//currencies = {
-	//	{"USD",{"US Dollar", 5}},
-	//	{"JPY",{"Japanese Yen", 55}},
-	//	{"GBP",{"British Pound", 15}},
-	//	{"CHF",{"Swiss Franc", 52}},
-	//	{"AUD",{"Australian Dollar", 75}},
-	//	{"CAD",{"Canadian Dollar", 52}},
-	//	{"CNY",{"Chinese Yuan", 51}}
-	//};
-
-	currValues = {
+	//default billing values
+	currencyValues = {
 		{"USD",0},
 		{"JPY",0},
 		{"GBP",0},
@@ -24,7 +15,8 @@ Billing::Billing()
 		{"USD",0}
 	};
 
-	currNames = {
+	//basic currencies
+	currencyNames = {
 		{"USD","US Dollar"},
 		{"JPY","Japanese Yen"},
 		{"GBP","British Pound"},
@@ -38,7 +30,7 @@ Billing::Billing()
 
 bool Billing::saveMoneyToFile(const std::string& name) {
 	std::string out;
-	for (auto x : currValues) {
+	for (auto x : currencyValues) {
 		out += (x.first + " " + std::to_string(x.second) + '\n');
 	}
 
@@ -64,27 +56,27 @@ bool Billing::getMoneyFromFile(const std::string& name) {
 	while (getline(file, line))
 	{
 		std::istringstream ss(line);
-		std::string cn;
-		float v;
+		std::string currencyName;
+		float value;
 
-		ss >> cn >> v;
+		ss >> currencyName >> value;
 
-		currValues[cn] = v;
+		currencyValues[currencyName] = value;
 	}
-	print();
+	//print();
 	return true;
 }
 
 bool Billing::keyExists(const std::string& currKey)
 {
-	if (currNames.find(currKey) == currNames.end())
+	if (currencyNames.find(currKey) == currencyNames.end())
 		return false;
 
 	return true;
 }
 
-void Billing::print() {
-	for (auto x : currValues) {
-		std::cout << x.first << "-" << currNames[x.first] << " " << x.second << '\n';
+void Billing::printBilling() {
+	for (auto x : currencyValues) {
+		std::cout << x.first << "-" << currencyNames[x.first] << " " << x.second << '\n';
 	}
 }

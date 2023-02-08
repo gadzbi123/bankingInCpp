@@ -55,3 +55,17 @@ account manager -
 	login()
 
 	accountMan -> user/bank
+
+display = {
+User user;
+showMenu(){
+	if client
+	cout<< This is menu for client
+	user->getMoney()
+
+	
+	if admin
+	cout<< This is menu for admin
+	user->seeLogs()
+  }
+}

@@ -12,7 +12,7 @@ char User::checkPasswordFromFile(const std::string& password) {
 
 		ss >> role >> n >> p;
 
-		std::cout << (n == name) << " " << (p == password) << "\n";
+		//std::cout << (n == name) << " " << (p == password) << "\n";
 		
 			if (n == name && p == password)
 			{
@@ -76,6 +76,8 @@ std::string User::getName()
 bool User::setName(std::string& n) {
 	if (n.size() > 3)
 		return false;
+
+	//TODO check if username exists
 
 	name = n;
 	return true;

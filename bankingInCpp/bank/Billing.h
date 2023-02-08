@@ -6,13 +6,12 @@
 #include <unordered_map>
 class Billing {
 private:
-	std::unordered_map<std::string, std::string> currNames;
+	std::unordered_map<std::string, std::string> currencyNames;
 protected:
-	std::unordered_map<std::string, float> currValues;
-	void print();
+	std::unordered_map<std::string, float> currencyValues;
 public:
+	void printBilling();
 	Billing();
-	//bool exchangeCurrency(const std::string& currencyTag, float value);
 	float getCurrentCurrencyValue(const std::string& currencyTag);
 	float showConversion(const std::string& currencyTagIn, const std::string& currencyTagOut, float value);
 	bool convert(const std::string& currencyTagIn, const std::string& currencyTagOut, float value);

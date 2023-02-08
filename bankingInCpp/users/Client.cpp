@@ -1,22 +1,26 @@
 #include "Client.h"
 
-Client::Client() :User("xdd") {
-	if (!Billing::getMoneyFromFile(name))
+Client::Client() :User("clientName") {
+	if (!Billing::getMoneyFromFile(name)) {
 		Billing::saveMoneyToFile(name);
+		std::cout << "Loaded default values\n";
+	}
 }
 
 Client::Client(std::string n) : User(n) {
-	if (!Billing::getMoneyFromFile(name))
+	if (!Billing::getMoneyFromFile(name)) {
 		Billing::saveMoneyToFile(name);
+		std::cout << "Loaded default values\n";
+	}
 }
 
 bool Client::withdraw(const std::string& currencyTag, float value) {
 	if (!Billing::keyExists(currencyTag))
 		return false;
-	if (currValues[currencyTag] < value)
+	if (currencyValues[currencyTag] < value)
 		return false;
 
-	currValues[currencyTag] -= value;
+	currencyValues[currencyTag] -= value;
 	return true;
 }
 
@@ -24,7 +28,7 @@ bool Client::deposit(const std::string& currencyTag, float value) {
 	if (!Billing::keyExists(currencyTag))
 		return false;
 
-	currValues[currencyTag] += value;
+	currencyValues[currencyTag] += value;
 	return true;
 }
 

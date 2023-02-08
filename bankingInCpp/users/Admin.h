@@ -6,7 +6,7 @@ class Admin : public User {
 	enum errorSource{BANK, CLIENT, ADMIN};
 	std::vector<std::pair<int,std::string>> errors;
 public:
-	virtual void whoAmI() { std::cout << "ADMIN" << name << "\n"; }
+	virtual void whoAmI() { std::cout << "Logged as Admin \"" << name << "\"\n"; }
 	Admin(std::string n);
 	Admin();
 

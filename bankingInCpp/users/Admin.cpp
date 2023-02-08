@@ -3,10 +3,10 @@ Admin::Admin(std::string n) : User(n) {
 	errors.push_back(std::pair<int,std::string>(errorSource::BANK,std::string("error on bank")));
 	errors.push_back(std::pair<int,std::string>(errorSource::CLIENT,std::string("error on client")));
 	errors.push_back(std::pair<int,std::string>(errorSource::ADMIN,std::string("error on admin")));
-	printErrors();
+	//printErrors();
 }
 
-Admin::Admin() : User("admin1")
+Admin::Admin() : User("adminName")
 {
 }
 
